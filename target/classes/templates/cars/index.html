@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+    <link rel="stylesheet" type="text/css">
+</head>
+<body>
+<main>
+    <div th:replace="~{cars/header :: header}"></div>
+    <hr>
+    <form th:action="@{/cars/new}" th:method="GET">
+        <button type="submit">Добавить новый автомобиль</button>
+    </form>
+    <hr>
+    <form th:action="@{/cars}" th:method="get">
+        <label for="price">Максимальная цена:</label>
+        <input type="text" inputmode="decimal" id="price" name="price" pattern="[0-9]*[.,]?[0-9]*"
+               required>
+        <br/><br/>
+        <button type="submit" class="">Отфильтровать</button>
+    </form>
+    <hr>
+
+    <div>
+        <div th:each="car : ${cars}">
+            <div>
+                <hr>
+                <div><span class="vessel-properties-name">Название модели автомобиля: </span><span th:text="${car.getName()}"></span></div>
+                <div><span class="vessel-properties-name">Производитель: </span><span th:text="${car.getBrand()}"></span></div>
+                <div><span class="vessel-properties-name">Страна производителя: </span><span th:text="${car.getCountry()}"></span></div>
+                <div><span class="vessel-properties-name">Лошадиные силы: </span><span th:text="${car.getHorsepower()}"></span></div>
+                <div><span class="vessel-properties-name">Цена: </span><span th:text="${car.getPrice() + ' RUB.'}"></span></div>
+                <a th:href="@{/cars/{id}(id=${car.getId()})}"><button>open</button></a>
+                <hr>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

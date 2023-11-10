@@ -1,0 +1,5 @@
+ru\sfu\querang\models\Car.class
+ru\sfu\querang\repositories\CarRepository.class
+ru\sfu\querang\controllers\CarController.class
+ru\sfu\querang\services\CarService.class
+ru\sfu\querang\Application.class

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${car.getName()}"></title>
+    <link rel="stylesheet" type="text/css">
+</head>
+<body>
+<div th:replace="~{cars/header :: header}"></div>
+<div>
+    <div><span>Название модели автомобиля: </span><span th:text="${car.getName()}"></span></div>
+    <div><span>Производитель: </span><span th:text="${car.getBrand()}"></span></div>
+    <div><span>Страна производителя: </span><span th:text="${car.getCountry()}"></span></div>
+    <div><span>Лошадиные силы: </span><span th:text="${car.getHorsepower()}"></span></div>
+    <div><span>Цена: </span><span th:text="${car.getPrice() + ' RUB.'}"></span></div>
+    <a th:href="@{/cars/{id}/edit(id=${car.getId()})}">Edit</a>
+    <form th:method="DELETE" th:action="@{/cars/{id}(id=${car.getId()})}"
+          style="display: inline;">
+        <button type="submit" name="action">Delete</button>
+    </form>
+</div>
+</body>
+</html>
